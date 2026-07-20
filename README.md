@@ -1,10 +1,28 @@
-# Claude Code auf frischem Windows 10/11 per npm installieren
+# Claude Code Installation (Windows 10/11 & Linux)
 
-Diese Anleitung beschreibt eine saubere Installation von Claude Code auf einem **frischen** Windows-10/11-System über npm, mit Fokus auf Vorbereitung, typische Fehlerquellen und ein korrekt gesetztes PATH.
+Dieser Guide beschreibt eine saubere Installation von Claude Code über npm für **Windows** (mit Fokus auf PATH-Probleme) und **Linux / macOS**.
 
-## Minimaler Spickzettel (Quick Start)
+## 🚀 Quick Start: Linux / macOS
 
-Am Ende sollen diese Befehle in einem **neu geöffneten** PowerShell-Fenster (ohne Adminrechte) funktionieren:
+Auf Unix-basierten Systemen ist die Installation dank nativer Bash-Integration meist ein Kinderspiel:
+
+```bash
+# 1) Node.js (Version 22+) prüfen:
+node -v
+npm -v
+
+# 2) Claude Code global installieren:
+npm install -g @anthropic-ai/claude-code
+
+# 3) Prüfen & starten:
+claude --version
+claude doctor
+```
+*(Tipp: Vermeide `sudo npm install -g`. Nutze stattdessen [NVM](https://github.com/nvm-sh/nvm), falls du Rechte-Probleme (EACCES) hast).*
+
+## 🚀 Quick Start: Windows 10/11
+
+Auf Windows sollen diese Befehle am Ende in einem **neu geöffneten** PowerShell-Fenster (ohne Adminrechte) funktionieren:
 
 ```powershell
 # 1) Nach Node.js LTS Installation (nodejs.org) prüfen:
@@ -14,7 +32,7 @@ npm -v
 # 2) Claude Code global per npm installieren:
 npm install -g @anthropic-ai/claude-code
 
-# 3) Falls 'claude' danach nicht gefunden wird, den User-PATH per PowerShell setzen:
+# 3) Falls 'claude' danach nicht gefunden wird, den User-PATH per PowerShell reparieren:
 $currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 [Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')
 
