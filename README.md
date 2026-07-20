@@ -11,10 +11,13 @@ Auf Unix-basierten Systemen ist die Installation dank nativer Bash-Integration m
 node -v
 npm -v
 
-# 2) Claude Code global installieren:
+# 2) Optional: npm auf die neueste Version updaten (verhindert lästige Update-Warnungen):
+npm install -g npm@latest
+
+# 3) Claude Code global installieren:
 npm install -g @anthropic-ai/claude-code
 
-# 3) Prüfen & starten:
+# 4) Prüfen & starten:
 claude --version
 claude doctor
 ```
@@ -32,14 +35,17 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 node -v
 npm -v
 
-# 3) Claude Code global per npm installieren:
+# 3) Optional: npm auf die neueste Version updaten (verhindert lästige Update-Warnungen):
+npm install -g npm@latest
+
+# 4) Claude Code global per npm installieren:
 npm install -g @anthropic-ai/claude-code
 
-# 4) Falls 'claude' danach nicht gefunden wird, den User-PATH per PowerShell reparieren:
+# 5) Falls 'claude' danach nicht gefunden wird, den User-PATH per PowerShell reparieren:
 $currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 [Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')
 
-# 5) Komplett neues PowerShell Terminal öffnen und prüfen:
+# 6) Komplett neues PowerShell Terminal öffnen und prüfen:
 claude --version
 claude doctor
 ```
