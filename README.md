@@ -25,18 +25,21 @@ claude doctor
 Auf Windows sollen diese Befehle am Ende in einem **neu geöffneten** PowerShell-Fenster (ohne Adminrechte) funktionieren:
 
 ```powershell
-# 1) Nach Node.js LTS Installation (nodejs.org) prüfen:
+# 1) WICHTIG: Erlaube der PowerShell das Ausführen von Skripten (verhindert rote Fehler!):
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+
+# 2) Nach Node.js LTS Installation (nodejs.org) prüfen:
 node -v
 npm -v
 
-# 2) Claude Code global per npm installieren:
+# 3) Claude Code global per npm installieren:
 npm install -g @anthropic-ai/claude-code
 
-# 3) Falls 'claude' danach nicht gefunden wird, den User-PATH per PowerShell reparieren:
+# 4) Falls 'claude' danach nicht gefunden wird, den User-PATH per PowerShell reparieren:
 $currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 [Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')
 
-# 4) Komplett neues PowerShell Terminal öffnen und prüfen:
+# 5) Komplett neues PowerShell Terminal öffnen und prüfen:
 claude --version
 claude doctor
 ```
